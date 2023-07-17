@@ -18,6 +18,9 @@ app.use(cors());
 const companyRouter = require('./api/routes/companyRoutes');
 app.use('/', companyRouter);
 
+const numberOfAgreementController = require('./api/routes/numberOfAgreementRoutes');
+app.use('/', numberOfAgreementController);
+
 
 app.listen(8080, function() {
     console.log('Serwer WorkRegister działa');
