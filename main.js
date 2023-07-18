@@ -21,6 +21,9 @@ app.use('/', companyRouter);
 const numberOfAgreementRouter = require('./api/routes/numberOfAgreementRoutes');
 app.use('/', numberOfAgreementRouter);
 
+const officeRouter = require('./api/routes/officeRoutes');
+app.use('/', officeRouter);
+
 
 app.listen(8080, function() {
     console.log('Serwer WorkRegister działa');
