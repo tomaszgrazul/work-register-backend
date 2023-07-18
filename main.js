@@ -18,8 +18,8 @@ app.use(cors());
 const companyRouter = require('./api/routes/companyRoutes');
 app.use('/', companyRouter);
 
-const numberOfAgreementController = require('./api/routes/numberOfAgreementRoutes');
-app.use('/', numberOfAgreementController);
+const numberOfAgreementRouter = require('./api/routes/numberOfAgreementRoutes');
+app.use('/', numberOfAgreementRouter);
 
 
 app.listen(8080, function() {

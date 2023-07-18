@@ -3,10 +3,10 @@ const router = express.Router();
 const companyListController = require('../controllers/companyListController');
 
 
-router.post('/create', companyListController.create);
+router.post('/addNewCompany', companyListController.create);
 
-router.delete('/delete/:id', companyListController.delete);
+router.delete('/deleteNewCompany/:id', companyListController.delete);
 
-router.get('/index', companyListController.index);
+router.get('/readNewCompany', companyListController.index);
 
 module.exports = router;

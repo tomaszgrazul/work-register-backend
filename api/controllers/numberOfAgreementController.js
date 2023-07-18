@@ -6,9 +6,8 @@ module.exports = {
     create: (req, res) => {
            
         let newNumberOfAgreement = new NumberOfAgreement(req.body);
-        
+
         newNumberOfAgreement
-        .db.collection("numberOfAgreement")
         .save()
         .then(() => {
             res.json({ save: true });

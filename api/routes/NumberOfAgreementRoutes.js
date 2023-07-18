@@ -3,10 +3,10 @@ const router = express.Router();
 const numberOfAgreementController = require('../controllers/numberOfAgreementController');
 
 
-router.post('/create', numberOfAgreementController.create);
+router.post('/addNumberOfAgreemnet', numberOfAgreementController.create);
 
-router.delete('/delete/:id', numberOfAgreementController.delete);
+router.delete('/deleteNumberOfAgreemnet/:id', numberOfAgreementController.delete);
 
-router.get('/index', numberOfAgreementController.index);
+router.get('/readNumberOfAgreemnet', numberOfAgreementController.index);
 
 module.exports = router;

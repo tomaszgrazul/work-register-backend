@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const NumberOfAgreement = new mongoose.Schema({
-    numberOfAgreement: String
+    number: String
 }, {
     timestamps: true
 })

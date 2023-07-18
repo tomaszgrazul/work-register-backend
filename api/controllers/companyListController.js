@@ -6,7 +6,7 @@ module.exports = {
     create: (req, res) => {
            
         let newCompany = new Company(req.body);
-        
+
         newCompany
         .save()
         .then(() => {
