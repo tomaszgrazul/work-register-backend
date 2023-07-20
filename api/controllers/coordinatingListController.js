@@ -1,57 +1,57 @@
-const Principal = require('../models/PrincipalListModel');
+const Coordinating = require('../models/CoordinatingListModel');
 
 
 module.exports = {
   
     create: (req, res) => {
            
-        let newPrincipal = new Principal(req.body);
+        let newCoordinating = new Coordinating(req.body);
 
-        newPrincipal
+        newCoordinating
         .save()
         .then(() => {
             res.json({ save: true });
         })
         .catch((err) => {
-            return res.json({ error: 'Get principal error' });
+            return res.json({ error: 'Get coordinating error' });
         });   
     },
 
     delete: (req, res) => {
 
-        Principal
+        Coordinating
         .findByIdAndDelete(req.params.id)
         .then(()=>{
             res.json({ delete: true});
         })
         .catch((err) => {
-            res.json({ error: 'Delete principal error' });
+            res.json({ error: 'Delete coordinating error' });
         });
     },
 
     index: (req, res) => {
 
-        Principal
+        Coordinating
         .find(req.params)
         .lean()
         .then(data => {
             res.json(data);
         })
         .catch((err) => {
-            res.json({ error: 'Read principal error' });
+            res.json({ error: 'Read coordinating error' });
         }); 
     },
 
     update: (req, res) => {
 
-        Principal
+        Coordinating
         .findByIdAndUpdate(req.params.id, req.body)
         .lean()
         .then(data => {
             res.json(data);
         })
         .catch((err) => {
-            res.json({ error: 'Update principal error' });
+            res.json({ error: 'Update coordinating error' });
         }); 
     }
 };

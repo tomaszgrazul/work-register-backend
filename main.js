@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-// const Company = require('./api/models/CompanyListModel');
 const cors = require('cors');
 
 
@@ -26,6 +25,9 @@ app.use('/', officeRouter);
 
 const principalRouter = require('./api/routes/principalRoutes');
 app.use('/', principalRouter);
+
+const coordinatingRouter = require('./api/routes/coordinatingRoutes');
+app.use('/', coordinatingRouter);
 
 
 app.listen(8080, function() {
