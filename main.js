@@ -29,6 +29,9 @@ app.use('/', principalRouter);
 const coordinatingRouter = require('./api/routes/coordinatingRoutes');
 app.use('/', coordinatingRouter);
 
+const coordinatorRouter = require('./api/routes/coordinatorRoutes');
+app.use('/', coordinatorRouter);
+
 
 app.listen(8080, function() {
     console.log('Serwer WorkRegister działa');
