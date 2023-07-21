@@ -32,8 +32,14 @@ app.use('/', coordinatingRouter);
 const coordinatorRouter = require('./api/routes/coordinatorRoutes');
 app.use('/', coordinatorRouter);
 
+const allowerRouter = require('./api/routes/allowerRoutes');
+app.use('/', allowerRouter);
+
 const managerRouter = require('./api/routes/managerRoutes');
 app.use('/', managerRouter);
+
+const supervisorRouter = require('./api/routes/supervisorRoutes');
+app.use('/', supervisorRouter);
 
 
 app.listen(8080, function() {
