@@ -44,6 +44,9 @@ app.use('/', supervisorRouter);
 const workOrderRouter = require('./api/routes/workOrderRoutes');
 app.use('/', workOrderRouter);
 
+const userRouter = require('./api/routes/userRoutes');
+app.use('/', userRouter);
+
 
 app.listen(8080, function() {
     console.log('Serwer WorkRegister działa');
