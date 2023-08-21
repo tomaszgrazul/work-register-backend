@@ -4,11 +4,10 @@ const User = require('../models/UserModel');
 module.exports = {
     create: (req, res) => {
         let newUser = new User(req.body);
-
+        
         newUser
         .save()
         .then(() => {
-            console.log('asass');
             // res.redirect("/");
             res.json({ save: true });
         })
@@ -20,6 +19,7 @@ module.exports = {
             //         user: req.body
             //     })
             // }
+            return res.json({ error: `${err.code}` });
         }); 
     },
 
