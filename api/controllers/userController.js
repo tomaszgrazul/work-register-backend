@@ -8,7 +8,6 @@ module.exports = {
         newUser
         .save()
         .then(() => {
-            // res.redirect("/");
             res.json({ save: true });
         })
         .catch((err) => {
@@ -23,52 +22,60 @@ module.exports = {
         }); 
     },
 
-    // login: (req, res) => {
+    login: (req, res) => {
 
-    //     User
-    //     .findOne({email: req.body.email})
-    //     .then((user) => {
-    //         // console.log(user);
-    //         if(!user) {
-    //             res.render('userViews/loginUser', {
-    //                 error: true,
-    //                 message: 'That user not exist',
-    //                 user: req.body
-    //                 })
-    //                 return;
-    //         } else {
-    //             bcrypt.compare(req.body.password, user.password, (err, logged) => {
+        User
+        // .findOne({email: req.body.email})
+        .findOne({username: req.body.username})
+        .then((user) => {
+            console.log('user', user);
+            if(!user) {
+                res.json({
+                    error: true,
+                    message: 'Użytkownik nie istnieje',
+                    user: req.body
+                    })
+                    return;
+            } else {
+                // bcrypt.compare(req.body.password, user.password, (err, logged) => {
 
-    //                 if (err) {
-    //                     res.render('userViews/loginUser', {
-    //                         error: true,
-    //                         message: 'Login error',
-    //                         user: req.body
-    //                         })
-    //                     return;
-    //                 }
+                    // if (err) {
+                    //     res.json({
+                    //         error: true,
+                    //         message: 'Błąd logowania',
+                    //         user: req.body
+                    //         })
+                    //     return;
+                    // }
 
-    //                 if (logged) {
-    //                     const token = user.generateAuthToken(user);
-    //                     // res.send(token);
-    //                     res.cookie('AuthToken', token);
-    //                     res.redirect('/blog');
-    //                 } else {
-    //                     res.render('userViews/loginUser', {
-    //                         error: true,
-    //                         message: 'Login data do not match',
-    //                         user: { email: req.body.email, password: '' }
-    //                         })
-    //                     return;
-    //                 }
-    //             })
-    //         }
+                    // if (logged) {
+                        // if (user) {
+                        // const token = user.generateAuthToken(user);
+                        // // res.send(token);
+                        // res.cookie('AuthToken', token);
+                        // res.redirect('/blog');
+                        res.json({
+                            error: false,
+                            message: 'Użytkownik zalogowany',
+                            user: req.body
+                            })
+                        console.log('Zalogowany');
+                    // } else {
+                    //     res.json({
+                    //         error: true,
+                    //         message: 'Nie prawidłowe dane logowania',
+                    //         user: { email: req.body.email, password: '' }
+                    //         })
+                    //     return;
+                    // }
+                // })
+            }
             
-    //   })
-    //   .catch((err) => {
-    //         res.send(err);
-    //     })
-    // },
+      })
+      .catch((err) => {
+            res.send(err);
+        })
+    },
 
     // logout: (req, res) => {
     //     res.clearCookie('AuthToken');
