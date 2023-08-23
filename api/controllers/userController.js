@@ -28,7 +28,7 @@ module.exports = {
         // .findOne({email: req.body.email})
         .findOne({username: req.body.username})
         .then((user) => {
-            console.log('user', user);
+            // console.log('user', user);
             if(!user) {
                 res.json({
                     error: true,
@@ -77,8 +77,14 @@ module.exports = {
         })
     },
 
-    // logout: (req, res) => {
-    //     res.clearCookie('AuthToken');
-    //     res.redirect('/user/login');
-    // }
+    logout: (req, res) => {
+        // res.clearCookie('AuthToken');
+        // res.redirect('/user/login');
+        res.json({
+            error: false,
+            message: 'Użytkownik wylogowany',
+            user: req.body
+            })
+        console.log('Wylogowany');
+    }
 }
