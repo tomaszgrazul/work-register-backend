@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
-
+// const cookieParser = require('cookie-parser');
 
 mongoose.connect('mongodb://127.0.0.1:27017/WorkRegister');
 
@@ -12,7 +12,9 @@ app.use(express.json());
 
 app.use(cors());
 
+// app.use(cookieParser());
 
+const authHelper = require("./api/middlewares/authHelper");
 
 const companyRouter = require('./api/routes/companyRoutes');
 app.use('/', companyRouter);
@@ -45,6 +47,7 @@ const workOrderRouter = require('./api/routes/workOrderRoutes');
 app.use('/', workOrderRouter);
 
 const userRouter = require('./api/routes/userRoutes');
+// app.use('/', authHelper, userRouter);
 app.use('/', userRouter);
 
 

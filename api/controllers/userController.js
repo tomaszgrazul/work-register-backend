@@ -1,5 +1,5 @@
 const User = require('../models/UserModel');
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 module.exports = {
     create: (req, res) => {
@@ -29,62 +29,59 @@ module.exports = {
         .findOne({username: req.body.username})
         .then((user) => {
             // console.log('user', user);
+            // const token = user.generateAuthToken(user);
+            // res.json({ username: user.username, jwt: token });
             if(!user) {
+                console.log('aaa');
                 res.json({
                     error: true,
                     message: 'Użytkownik nie istnieje',
-                    user: req.body
+                    // user: req.body
                     })
                     return;
             } else {
-                // bcrypt.compare(req.body.password, user.password, (err, logged) => {
+                bcrypt.compare(req.body.password, user.password, (err, logged) => {
 
-                    // if (err) {
-                    //     res.json({
-                    //         error: true,
-                    //         message: 'Błąd logowania',
-                    //         user: req.body
-                    //         })
-                    //     return;
-                    // }
+                    if (err) {
+                        res.status(500).json({
+                            error: true,
+                            message: 'Błąd logowania'
+                            })
+                        return;
+                    }
 
-                    // if (logged) {
-                        // if (user) {
-                        // const token = user.generateAuthToken(user);
-                        // // res.send(token);
-                        // res.cookie('AuthToken', token);
-                        // res.redirect('/blog');
-                        res.json({
+                    if (logged) {
+                        const token = user.generateAuthToken(user);
+                        // res.json({ name: user.name, jwt: token });
+                        res.status(200).json({
                             error: false,
                             message: 'Użytkownik zalogowany',
-                            user: req.body
+                            user: req.body,
+                            jwt: token
                             })
-                        console.log('Zalogowany');
-                    // } else {
-                    //     res.json({
-                    //         error: true,
-                    //         message: 'Nie prawidłowe dane logowania',
-                    //         user: { email: req.body.email, password: '' }
-                    //         })
-                    //     return;
-                    // }
-                // })
+                    } else {
+                        res.status(400).json({
+                            error: true,
+                            message: 'Niezgodność danych logowania'
+                            })
+                        return;
+                    }
+                })
             }
             
       })
       .catch((err) => {
-            res.send(err);
+            res.status(400).json({error: err});
         })
     },
 
     logout: (req, res) => {
-        // res.clearCookie('AuthToken');
-        // res.redirect('/user/login');
+        res.clearCookie('AuthToken');
         res.json({
             error: false,
             message: 'Użytkownik wylogowany',
             user: req.body
             })
-        console.log('Wylogowany');
+        // console.log('Wylogowany');
     }
 }
