@@ -32,7 +32,7 @@ module.exports = {
             // const token = user.generateAuthToken(user);
             // res.json({ username: user.username, jwt: token });
             if(!user) {
-                console.log('aaa');
+                // console.log('aaa');
                 res.json({
                     error: true,
                     message: 'Użytkownik nie istnieje',
@@ -53,10 +53,11 @@ module.exports = {
                     if (logged) {
                         const token = user.generateAuthToken(user);
                         // res.json({ name: user.name, jwt: token });
+                        console.log('logged');
                         res.status(200).json({
                             error: false,
                             message: 'Użytkownik zalogowany',
-                            user: req.body,
+                            user: req.body.username,
                             jwt: token
                             })
                     } else {
@@ -76,7 +77,7 @@ module.exports = {
     },
 
     logout: (req, res) => {
-        res.clearCookie('AuthToken');
+        // res.clearCookie('AuthToken');
         res.json({
             error: false,
             message: 'Użytkownik wylogowany',

@@ -17,6 +17,7 @@ app.use(cors());
 const authHelper = require("./api/middlewares/authHelper");
 
 const companyRouter = require('./api/routes/companyRoutes');
+// app.use('/', authHelper, companyRouter);
 app.use('/', companyRouter);
 
 const numberOfAgreementRouter = require('./api/routes/numberOfAgreementRoutes');
@@ -44,7 +45,8 @@ const supervisorRouter = require('./api/routes/supervisorRoutes');
 app.use('/', supervisorRouter);
 
 const workOrderRouter = require('./api/routes/workOrderRoutes');
-app.use('/', workOrderRouter);
+app.use('/', authHelper, workOrderRouter);
+// app.use('/', workOrderRouter);
 
 const userRouter = require('./api/routes/userRoutes');
 // app.use('/', authHelper, userRouter);
