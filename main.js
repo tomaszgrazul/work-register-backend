@@ -17,40 +17,37 @@ app.use(cors());
 const authHelper = require("./api/middlewares/authHelper");
 
 const companyRouter = require('./api/routes/companyRoutes');
-// app.use('/', authHelper, companyRouter);
-app.use('/', companyRouter);
+app.use('/workRegister', authHelper, companyRouter);
 
 const numberOfAgreementRouter = require('./api/routes/numberOfAgreementRoutes');
-app.use('/', numberOfAgreementRouter);
+app.use('/workRegister', authHelper, numberOfAgreementRouter);
 
 const officeRouter = require('./api/routes/officeRoutes');
-app.use('/', officeRouter);
+app.use('/workRegister', authHelper, officeRouter);
 
 const principalRouter = require('./api/routes/principalRoutes');
-app.use('/', principalRouter);
+app.use('/workRegister', authHelper, principalRouter);
 
 const coordinatingRouter = require('./api/routes/coordinatingRoutes');
-app.use('/', coordinatingRouter);
+app.use('/workRegister', authHelper, coordinatingRouter);
 
 const coordinatorRouter = require('./api/routes/coordinatorRoutes');
-app.use('/', coordinatorRouter);
+app.use('/workRegister', authHelper, coordinatorRouter);
 
 const allowerRouter = require('./api/routes/allowerRoutes');
-app.use('/', allowerRouter);
+app.use('/workRegister', authHelper, allowerRouter);
 
 const managerRouter = require('./api/routes/managerRoutes');
-app.use('/', managerRouter);
+app.use('/workRegister', authHelper, managerRouter);
 
 const supervisorRouter = require('./api/routes/supervisorRoutes');
-app.use('/', supervisorRouter);
+app.use('/workRegister', authHelper, supervisorRouter);
 
 const workOrderRouter = require('./api/routes/workOrderRoutes');
-app.use('/', authHelper, workOrderRouter);
-// app.use('/', workOrderRouter);
+app.use('/workOrder', authHelper, workOrderRouter);
 
 const userRouter = require('./api/routes/userRoutes');
-// app.use('/', authHelper, userRouter);
-app.use('/', userRouter);
+app.use('/user', userRouter);
 
 
 app.listen(8080, function() {

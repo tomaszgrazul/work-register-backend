@@ -43,7 +43,8 @@ module.exports = {
                 bcrypt.compare(req.body.password, user.password, (err, logged) => {
 
                     if (err) {
-                        res.status(500).json({
+                        res.json({
+                        // res.status(500).json({
                             error: true,
                             message: 'Błąd logowania'
                             })
@@ -53,15 +54,17 @@ module.exports = {
                     if (logged) {
                         const token = user.generateAuthToken(user);
                         // res.json({ name: user.name, jwt: token });
-                        console.log('logged');
-                        res.status(200).json({
+                        // console.log('logged');
+                        res.json({
+                        // res.status(200).json({
                             error: false,
                             message: 'Użytkownik zalogowany',
                             user: req.body.username,
                             jwt: token
                             })
                     } else {
-                        res.status(400).json({
+                        res.json({
+                        // res.status(400).json({
                             error: true,
                             message: 'Niezgodność danych logowania'
                             })
@@ -72,7 +75,8 @@ module.exports = {
             
       })
       .catch((err) => {
-            res.status(400).json({error: err});
+        res.json({error: err});
+            // res.status(400).json({error: err});
         })
     },
 
