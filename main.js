@@ -46,6 +46,9 @@ app.use('/workRegister', authHelper, supervisorRouter);
 const workOrderRouter = require('./api/routes/workOrderRoutes');
 app.use('/workOrder', authHelper, workOrderRouter);
 
+const teamMember = require('./api/routes/teamMemberRoutes');
+app.use('/teamMember', authHelper, teamMember);
+
 const userRouter = require('./api/routes/userRoutes');
 app.use('/user', userRouter);
 
