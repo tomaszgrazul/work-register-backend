@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const NumberOfAgreement = new mongoose.Schema({
-    numberOfAgreement: String
+    numberOfAgreement: { type: String, require: true, unique: true }
 }, {
     timestamps: true
 })

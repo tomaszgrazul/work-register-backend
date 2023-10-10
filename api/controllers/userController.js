@@ -11,14 +11,13 @@ module.exports = {
             res.json({ save: true });
         })
         .catch((err) => {
-            // if (err.code === 11000) {
-            //     res.render('userViews/signupUser', {
-            //         error: true,
-            //         message: 'User already exist',
-            //         user: req.body
-            //     })
-            // }
-            return res.json({ error: `${err.code}` });
+            if (err.code === 11000) {
+                return res.json({
+                    error: true,
+                    message: 'Nazwa użytkownika lub email już istnieje',
+                })
+            }
+            // return res.json({ error: `${err.code}` });
         }); 
     },
 

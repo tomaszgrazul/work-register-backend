@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Office = new mongoose.Schema({
-    officeName: String
+    officeName: { type: String, require: true, unique: true }
 }, {
     timestamps: true
 })

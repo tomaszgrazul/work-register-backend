@@ -22,10 +22,15 @@ module.exports = {
         Principal
         .findByIdAndDelete(req.params.id)
         .then(()=>{
-            res.json({ delete: true});
+            res.json({ message: '',
+                       save: true });
         })
         .catch((err) => {
-            res.json({ error: 'Delete principal error' });
+            if (err.code === 11000) {
+                return res.json({ message: 'Już istnieje' })
+            } else {
+                return res.json({ message: 'Wystąpił błąd. Spróbuj jeszcze raz.' });
+            }
         });
     },
 

@@ -10,10 +10,15 @@ module.exports = {
         newCoordinating
         .save()
         .then(() => {
-            res.json({ save: true });
+            res.json({ message: '',
+                       save: true });
         })
         .catch((err) => {
-            return res.json({ error: 'Get coordinating error' });
+            if (err.code === 11000) {
+                return res.json({ message: 'Już istnieje' })
+            } else {
+                return res.json({ message: 'Wystąpił błąd. Spróbuj jeszcze raz.' });
+            }
         });   
     },
 
