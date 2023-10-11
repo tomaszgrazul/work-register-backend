@@ -10,15 +10,10 @@ module.exports = {
         newWorkOrder
         .save()
         .then(() => {
-            res.json({ message: '',
-                       save: true });
+            res.json({ save: true });
         })
-        .catch((err) => {
-            if (err.code === 11000) {
-                return res.json({ message: 'Już istnieje' })
-            } else {
-                return res.json({ message: 'Wystąpił błąd. Spróbuj jeszcze raz.' });
-            }
+        .catch(() => {
+            return res.json({ error: 'Get workOrder error' });
         });   
     },
 
@@ -29,7 +24,7 @@ module.exports = {
         .then(()=>{
             res.json({ delete: true});
         })
-        .catch((err) => {
+        .catch(() => {
             res.json({ error: 'Delete workOrder error' });
         });
     },
@@ -42,7 +37,7 @@ module.exports = {
         .then(data => {
             res.json(data);
         })
-        .catch((err) => {
+        .catch(() => {
             res.json({ error: 'Read workOrder error' });
         }); 
     },

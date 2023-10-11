@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Coordinating = new mongoose.Schema({
-    coordinatingName: String,
+    coordinatingName: { type: String, require: true, unique: true },
     coordinatingCompany: String
 }, {
     timestamps: true

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Supervisor = new mongoose.Schema({
-    supervisorName: String,
+    supervisorName: { type: String, require: true, unique: true },
     supervisorCompany: String
 }, {
     timestamps: true

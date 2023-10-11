@@ -10,8 +10,7 @@ module.exports = {
         newOffice
         .save()
         .then(() => {
-            res.json({ message: '',
-                       save: true });
+            res.json({ message: 'Zapisane' });
         })
         .catch((err) => {
             if (err.code === 11000) {

@@ -10,10 +10,14 @@ module.exports = {
         newPrincipal
         .save()
         .then(() => {
-            res.json({ save: true });
+            res.json({ message: 'Zapisane' });
         })
         .catch((err) => {
-            return res.json({ error: 'Get principal error' });
+            if (err.code === 11000) {
+                return res.json({ message: 'Już istnieje' })
+            } else {
+                return res.json({ message: 'Wystąpił błąd. Spróbuj jeszcze raz.' });
+            }
         });   
     },
 
@@ -22,8 +26,7 @@ module.exports = {
         Principal
         .findByIdAndDelete(req.params.id)
         .then(()=>{
-            res.json({ message: '',
-                       save: true });
+            res.json({ message: 'Zapisane' });
         })
         .catch((err) => {
             if (err.code === 11000) {

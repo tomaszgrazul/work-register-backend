@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const TeamMember = new mongoose.Schema({
-    teamMember: String,
+    teamMember: { type: String, require: true, unique: true },
     company: String
 }, {
     timestamps: true

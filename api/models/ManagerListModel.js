@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Manager = new mongoose.Schema({
-    managerName: String,
+    managerName: { type: String, require: true, unique: true },
     managerCompany: String
 }, {
     timestamps: true

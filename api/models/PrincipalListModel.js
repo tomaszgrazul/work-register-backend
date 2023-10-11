@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Principal = new mongoose.Schema({
-    principalName: String,
+    principalName: { type: String, require: true, unique: true },
     principalCompany: String
 }, {
     timestamps: true
