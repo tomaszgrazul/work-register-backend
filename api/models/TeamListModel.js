@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const TeamMember = new mongoose.Schema({
     teamMember: { type: String, require: true, unique: true },
-    company: String
+    teamMemberCompany: String
 }, {
     timestamps: true
 })

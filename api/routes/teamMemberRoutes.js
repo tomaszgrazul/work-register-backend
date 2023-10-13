@@ -9,4 +9,6 @@ router.delete('/deleteTeamMember/:id', teamListController.delete);
 
 router.get('/readTeamMember', teamListController.index);
 
+router.post('/editTeamMember/:id', teamListController.update);
+
 module.exports = router;

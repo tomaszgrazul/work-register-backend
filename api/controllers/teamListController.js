@@ -46,5 +46,18 @@ module.exports = {
         .catch((err) => {
             res.json({ error: 'Read TeamMember error' });
         }); 
+    },
+
+    update: (req, res) => {
+
+        TeamMember
+        .findByIdAndUpdate(req.params.id, req.body)
+        .lean()
+        .then(data => {
+            res.json(data);
+        })
+        .catch((err) => {
+            res.json({ error: 'Update supervisor error' });
+        }); 
     }
 };
