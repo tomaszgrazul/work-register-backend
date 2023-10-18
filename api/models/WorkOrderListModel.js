@@ -14,7 +14,8 @@ const WorkOrder = new mongoose.Schema({
     allowerName: String,
     startDate: String,
     stopDate: String,
-    numberRegistration: String
+    numberRegistration: String,
+    teamMember: Array
 }, {
     timestamps: true
 })
