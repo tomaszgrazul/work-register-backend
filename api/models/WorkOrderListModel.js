@@ -15,7 +15,10 @@ const WorkOrder = new mongoose.Schema({
     startDate: String,
     stopDate: String,
     numberRegistration: String,
-    teamMember: Array
+    teamMember: Array,
+    work: String,
+    workZone: String,
+    workEnd: String
 }, {
     timestamps: true
 })
