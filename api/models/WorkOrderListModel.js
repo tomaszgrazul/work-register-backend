@@ -24,7 +24,9 @@ const WorkOrder = new mongoose.Schema({
     groupThree: String,
     workGasD: String,
     workFireD: String,
-    workOtherD: String
+    workOtherD: String,
+    createdBy: String,
+    editBy: String
 }, {
     timestamps: true
 })
